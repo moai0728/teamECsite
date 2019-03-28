@@ -95,7 +95,7 @@ public class ProductInfoDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
-		String sql = "select * from product_info where category_id=? and product_id not in(?) order by rand() limit ?,?";   //カテゴリー検索
+		String sql = "select * from product_info where category_id=? and product_id not in(?) order by rand() limit ?,?";   //おすすめ商品表示
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, categoryId);
@@ -136,7 +136,7 @@ public class ProductInfoDAO {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
-		String sql = "select * from product_info where";                               //おすすめ商品
+		String sql = "select * from product_info where";                               //全カテゴリーでキーワード検索
 		boolean initializeFlag = true;
 		for(String keyword : keywordsList){
 			if(initializeFlag){
